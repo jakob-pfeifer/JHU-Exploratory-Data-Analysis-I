@@ -1,6 +1,11 @@
-library("data.table")
+#download and deal with the zipped file
 
-setwd("~/Desktop/datasciencecoursera/4_Exploratory_Data_Analysis/project/data")
+zip.url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+dir <- getwd()
+zip.file <- "household_power_consumption.zip"
+zip.combine <- as.character(paste(dir, zip.file, sep = "/"))
+download.file(zip.url, destfile = zip.combine)
+unzipped_file <- unzip(zip.file)
 
 #Reads in data from file then subsets data for specified dates
 consumption <- data.table::fread(input = "household_power_consumption.txt"
